@@ -67,7 +67,7 @@ app.post("/form-data", (req, res) => {
     }
     console.log("Message sent: %s", info.messageId);
 
-    res.status(500).json({ msg: "Email has been sent" });
+    res.status(200).json({ msg: "Email has been sent" });
   });
 });
 
