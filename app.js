@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
-const creds = require("./config/credentials");
 const keys = require("./config/keys");
 
 const app = express();
@@ -27,11 +26,11 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname + "/public"));
+// app.use(express.static(__dirname + "/public"));
 
-app.get("/", (req, res) => {
-  res.render("index.html");
-});
+// app.get("/", (req, res) => {
+//   res.render("index.html");
+// });
 
 // Getting the form-data from React
 app.post("/form-data", (req, res) => {
