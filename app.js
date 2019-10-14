@@ -26,11 +26,11 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public"));
 
-// app.get("/", (req, res) => {
-//   res.render("index.html");
-// });
+app.get("/", (req, res) => {
+  res.render("index.html");
+});
 
 // Getting the form-data from React
 app.post("/form-data", (req, res) => {
