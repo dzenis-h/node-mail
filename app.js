@@ -78,4 +78,6 @@ app.post("/form-data", (req, res) => {
   });
 });
 
-app.listen(5050, () => console.log("Server started..."));
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => console.log("Server started..."));
