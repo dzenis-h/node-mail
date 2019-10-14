@@ -1,4 +1,4 @@
 module.exports = {
-  user: "bigga.test.2018@gmail.com",
-  pass: "test_1234"
+  user: process.env.user,
+  pass: process.env.pass
 };

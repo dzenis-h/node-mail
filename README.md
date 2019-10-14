@@ -1,21 +1,31 @@
-# Node Contact Form
+# Node mail
 
-Simple Node.js/Express app using Nodemailer to send emails
+---
 
-- Please add your own SMTP info for it to work
+### Description:
+
+Server-side logic for receiving form-data and formatting it into a template to send it as an email with the help of the 'node-mailer' package.
+
+---
 
 ### Version
 
 1.0.0
 
+---
+
 ## Install Dependencies
 
 ```bash
-npm install 
+npm i
 ```
 
 ## Run
 
 ```bash
-node app
+npm start
 ```
+
+---
+
+#### NOTE: Add your own SMTP info for it to work

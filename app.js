@@ -8,7 +8,13 @@ const app = express();
 
 // Enable CORS
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  // Allow multiple specific origins
+  const allowedOrigins = ["https://dzenis-h.com", "http://localhost:3000"];
+  const origin = req.headers.origin;
+  if (allowedOrigins.indexOf(origin) > -1) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  // res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -16,7 +22,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.set("view engine", "hbs");
+// app.set("view engine", "hbs");
 
 // Body Parser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -63,11 +69,12 @@ app.post("/form-data", (req, res) => {
   // Send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      return console.log(error);
+      console.log(error);
+      return res.status(500).json({ msg: "Something went wrong!" });
     }
     console.log("Message sent: %s", info.messageId);
 
-    res.status(500).json({ msg: "Email has been sent" });
+    res.status(200).send({ msg: "Email has been sent" });
   });
 });
 
