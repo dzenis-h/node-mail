@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
 const creds = require("./config/credentials");
+const keys = require("./config/keys");
 
 const app = express();
 
@@ -22,34 +23,49 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.set("view engine", "hbs");
-
 // Body Parser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(express.static(__dirname + "/public"));
+
+app.get("/", (req, res) => {
+  res.render("index.html");
+});
+
 // Getting the form-data from React
 app.post("/form-data", (req, res) => {
   let output = `
-  <p>You have a new contact request</p>
-  <h3>Contact Details:</h3>
-  <ul>  
-      <li>Name: ${req.body.formData.name}</li>
-      <li>Company: ${req.body.formData.company}</li>
-      <li>Email: ${req.body.formData.email}</li>
-      <li>Phone: ${req.body.formData.phone}</li>
-  </ul>
-    <h3>Message:</h3>
-    <p>${req.body.formData.message}</p>
-  `;
+  <div style='font-family: Verdana, Geneva, Tahoma, sans-serif; background-color: #e5e5e5;
+  text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.726); margin: .5rem; border: 2px solid #000; 
+  border: 2px solid #e2e234;'>
 
+  <b style='padding: .5rem; color: #444; font-weight: bold;'
+  >You have a new contact request</b> <br>
+  
+  <h3 style='padding: .6rem; color: #e2e234; background: #444;'>Contact Details:</h3>
+  <div>
+  <ul style='list-style-type: square;'>  
+      <li>Name: <span style='font-weight: bold; color: #444'>${req.body.formData.name}</span></li>
+      <li>Company: <span style='font-weight: bold; color: #444'>${req.body.formData.company}</span></li>
+      <li>Email: <span style='font-weight: bold; color: #444'>${req.body.formData.email}</span></li>
+      <li>Phone: <span style='font-weight: bold; color: #444'>${req.body.formData.phone}</span></li>
+  </ul>
+  </div>
+    <h3 style='padding: .6rem; color: #e2e234; background: #444;'>Message:</h3>
+    <p style='background-color: #e5e5e5; margin: .6rem;'>
+    ${req.body.formData.message}</p>
+    </div>
+    `;
+
+  // GOOGLE
   let transporter = nodemailer.createTransport(
     smtpTransport({
       service: "gmail",
       host: "smtp.gmail.com",
       auth: {
-        user: creds.user,
-        pass: creds.pass
+        user: keys.user,
+        pass: keys.pass
       },
       tls: {
         rejectUnauthorized: false // Not safe for production
@@ -59,9 +75,9 @@ app.post("/form-data", (req, res) => {
 
   // Setup email data with unicode symbols
   let mailOptions = {
-    from: `Contact Form - ${req.body.formData.email}`, // sender address
-    to: creds.user, // list of receivers
-    subject: "Node Contact Request", // Subject line
+    from: req.body.formData.email, // sender address
+    to: "contact.dzenis.h@gmail.com", // list of receivers
+    subject: "Contact Form", // Subject line
     text: "", // plain text body
     html: output // html body
   };
@@ -78,6 +94,6 @@ app.post("/form-data", (req, res) => {
   });
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5050;
 
 app.listen(port, () => console.log("Server started..."));
