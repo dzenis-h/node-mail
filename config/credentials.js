@@ -1,4 +1,4 @@
 module.exports = {
-  user: "bigga.test.2018@gmail.com",
-  pass: "test_1234"
+  user: "put_your_email_here",
+  pass: "put_your_password_here"
 };
