@@ -19,7 +19,8 @@ app.use((req, res, next) => {
     "reactive-portfolio.firebaseapp.com",
     "dzenis-h.com",
     "www.dzenis-h.com",
-    "https://dzenis-h.com"
+    "https://dzenis-h.com",
+    "https://dzenis-h-contact.appspot.com/form-data"
   ];
 
   const origin = req.headers.origin; // extract the origin from the header
