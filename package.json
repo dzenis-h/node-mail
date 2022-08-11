@@ -1,22 +1,21 @@
 {
-  "name": "node_mailer",
-  "version": "1.0.0",
+  "name": "node_contact_form",
+  "version": "1.2.0",
   "author": "Dzenis H.",
   "license": "MIT",
-  "description": "Backend for receiving form-data and formatting it into a template, and send it as an email with the help of the node-mailer package.",
+  "description": "Backend for receiving form-data, formatting it into a template, and send it as an email with the help of the node-mailer package.",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "NODE_ENV=production node app.js",
     "dev": "nodemon app.js"
   },
   "dependencies": {
-    "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "nodemailer": "^4.1.0",
     "nodemailer-smtp-transport": "^2.7.4"
   },
   "engines": {
-    "node": "10.16.3",
-    "npm": "6.9.0"
+    "node": "10.x.x",
+    "npm": "6.x.x"
   }
 }
