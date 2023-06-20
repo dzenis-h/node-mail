@@ -1,9 +1,9 @@
 ##
+<img src="https://stackoverflow.com/users/flair/8146571.png?theme=dark&showIcon=true&showName=true&showBadges=true&showRep=true&showPosts=true&stackApps=true" align=“center”/>
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/dzenis-h/node-mail)
 ![GitHub contributors](https://img.shields.io/github/contributors/dzenis-h/node-mail)
 ![GitHub stars](https://img.shields.io/github/stars/dzenis-h/node-mail?style=social)
-<img src="https://stackoverflow.com/users/flair/8146571.png?theme=dark&showIcon=true&showName=true&showBadges=true&showRep=true&showPosts=true&stackApps=true" align=“center”/>
 ![GitHub forks](https://img.shields.io/github/forks/dzenis-h/node-mail?style=social)
 [![LinkedIn Follow](https://img.shields.io/badge/-Follow-blue?style=social&logo=linkedin&link=https://www.linkedin.com/in/dzenis-h/)](https://www.linkedin.com/in/dzenis-h/)
 [![GitHub Follow](https://img.shields.io/badge/-Follow-black?style=social&logo=github&link=https://github.com/dzenis-h)](https://github.com/dzenis-h)  
